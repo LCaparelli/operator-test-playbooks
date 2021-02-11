@@ -29,7 +29,7 @@
             - name: "Printing failed message"
               fail:
                 msg: "Operator '{{ cofc_operator_dir | basename }}' is in package manifest format, but contains some versions in bundle format (see above for list). Format mixing in one operator is not supported."
-          when: cofc_annotation_files_find_manifest.files|length > 0
+          when: cofc_annotation_files_find_manifest.files|length != cofc_versions_find.files|length
       when: cofc_package_file_find.files|length > 0
 
     - name: "Checking validity for package maifest format"
